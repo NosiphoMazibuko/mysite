@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rocking Stars | Home</title>
+
+    <!-- Linking CSS styles -->
+    <link rel="stylesheet" href="{% static 'myapp/css/styles.css' %}">
+</head>
+<body>
+    <h1>Welcome to The Rocking Stars' Official Website!</h1>
+    <p>The Rocking Stars is a world-famous band known for electrifying performances and chart-topping hits!</p>
+    
+    <img src="{% static 'myapp/images/band.jpeg' %}" alt="The Rocking Stars Band Photo">
+    
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="/">Home</a> | <a href="/about/">About</a> | <a href="{% url 'contact' %}">Contact Us</a> | <a href="/band_members/">Band Members</a>
+
+
+    <!-- Authentication Links -->
+    {% if user.is_authenticated %}
+        <p>Hello, {{ user.username }}!</p>
+        <!-- Logout button -->
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a> | <a href="{% url 'signup' %}">Sign Up</a>
+    {% endif %}
+
+    </nav>
+    
+    <!-- Latest News Section -->
+    <section>
+        <h2>Latest News</h2>
+        <p>Check out our latest album, "Rock On," now available on all streaming platforms!</p>
+    </section>
+    
+    <!-- Upcoming Shows Section -->
+    <section>
+        <h2>Upcoming Shows</h2>
+        <p>Join us on tour this summer across Europe and North America. Tickets are selling fast!</p>
+    </section>
+</body>
+</html>

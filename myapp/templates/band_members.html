@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Band Members - The Rocking Stars</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .member {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .member h2 {
+            margin: 0;
+            color: #34495e;
+        }
+        .member .role {
+            font-weight: bold;
+        }
+        .member .bio {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Meet The Rocking Stars</h1>
+    <div class="members">
+        {% for member in members %}
+            <div class="member">
+                <h2>{{ member.name }}</h2>
+                <div class="role">Role: {{ member.role }}</div>
+                <div class="bio">{{ member.bio }}</div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
